@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ConverterRoutingModule } from './currency-converter-routing.module';
 import { PopularCurrenciesComponent } from './popular-currencies/popular-currencies.component';
+import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -10,6 +13,7 @@ import { PopularCurrenciesComponent } from './popular-currencies/popular-currenc
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ConverterRoutingModule
   ],
   exports:[

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 import { CurrencyConverterModule } from './currency-converter/currency-converter.module';
@@ -13,9 +14,10 @@ import { CurrencyConverterModule } from './currency-converter/currency-converter
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     SharedModule,
     AppRoutingModule,
-    CurrencyConverterModule
+    CurrencyConverterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

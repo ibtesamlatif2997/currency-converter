@@ -12,12 +12,20 @@
         <div class="flex-container-row">
             <div>
                 <div>From</div> 
-                <input type="text">
+                <select [(ngModel)]="fromCurrency">
+                    <option *ngFor="let currency of currencies" [value]="currency.value">
+                        {{currency.name}}
+                    </option>
+                </select>
             </div>
             <img class="arrow-image" src="assets/images/arrows.jpg">
             <div>
                 <div>To</div> 
-                <input type="text">
+                <select [(ngModel)]="toCurrency">
+                    <option *ngFor="let currency of currencies" [value]="currency.value">
+                        {{currency.name}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="flex-container-row">
