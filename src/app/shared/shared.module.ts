@@ -5,6 +5,7 @@ import { PopularCurrenciesComponent } from './components/popular-currencies/popu
 import { ConverterPanelComponent } from './components/converter-panel/converter-panel.component';
 import { FormsModule } from '@angular/forms';
 import { HistogramChartComponent } from './components/histogram-chart/histogram-chart.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HistogramChartComponent } from './components/histogram-chart/histogram-
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CoreModule
   ],
   exports: [
     HeaderComponent,

@@ -1,5 +1,5 @@
 <div>Currency Exchanger</div>
 
-<app-converter-panel></app-converter-panel>
+<app-converter-panel (converted)="convertValues($event)"></app-converter-panel>
 
-<app-popular-currencies></app-popular-currencies>
+<app-popular-currencies  [popular-currencies]="popularCurrencies"></app-popular-currencies>

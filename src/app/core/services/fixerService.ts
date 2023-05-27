@@ -1,12 +1,7 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { interval, take, lastValueFrom } from 'rxjs';
-
-type Symbols = {
-    success: boolean,
-    symbols: any
-};
+import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class FixerService{
@@ -31,5 +26,39 @@ export class FixerService{
                 return res.symbols;
             }
         }
+
+        return null;
+    }
+
+    async getRates(date="latest"){
+        let historicData:any = {};
+        if(localStorage.getItem("historic")){
+            historicData = JSON.parse(localStorage.getItem("historic") || '{}');
+        }
+
+        if(date !== 'latest' && historicData[date]){
+            return historicData[date];
+        }
+
+        const response = this.http.get(`${this.apiUrl}/${date}`);
+        const res: any = await lastValueFrom(response);
+
+        if(res && res.success){
+            historicData[res.date] = res.rates;
+            localStorage.setItem("historic", JSON.stringify(historicData))
+            return res.rates;
+        }
+
+        return null;
+    }
+
+    async getHistoricData(){
+        let historicData:any = {};
+
+        if(localStorage.getItem("historic")){
+            historicData = JSON.parse(localStorage.getItem("historic") || '{}');
+        }
+
+        return historicData;
     }
 }

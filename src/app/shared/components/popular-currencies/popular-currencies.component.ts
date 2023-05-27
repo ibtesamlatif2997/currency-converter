@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { PopularCurrencies } from 'src/app/core/types/types';
 
 @Component({
   selector: 'app-popular-currencies',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popular-currencies.component.scss']
 })
 export class PopularCurrenciesComponent implements OnInit {
+  @Input('popular-currencies') public popularCurrencies: PopularCurrencies[] = [];
 
   constructor() { }
 
