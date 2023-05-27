@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FixerService } from 'src/app/core/services/fixerService';
 import { PopularCurrencies, convertEvent } from 'src/app/core/types/types';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -11,52 +12,22 @@ import { PopularCurrencies, convertEvent } from 'src/app/core/types/types';
 })
 export class HomeComponent implements OnInit {
   
-  popularCurrencies: PopularCurrencies[] = [
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // },
-    // {
-    //   name: "abc",
-    //   value: 5255.25555
-    // }
-  ]
+  popularCurrencies: PopularCurrencies[] = []
+  isDetailed: boolean = false;
 
   constructor(
-    private fixer: FixerService
+    private fixer: FixerService,
+    private _route: ActivatedRoute,
+    private _router: Router
   ){
 
   }
 
   ngOnInit(): void {
+    this._route.queryParams
+    .subscribe((params:any) => {
+      this.isDetailed = (params.isDetailed === "true");
+    });
   }
 
   async convertValues($event: convertEvent){
@@ -70,11 +41,19 @@ export class HomeComponent implements OnInit {
       });
     }
 
-    // this.popularCurrencies.sort((a,b) => {
-    //   return b.value - a.value
-    // })
-
     this.popularCurrencies.splice(9)
   }
 
+  openHome(){
+    this._router.navigate([""], {
+      relativeTo: this._route,
+      queryParams: {
+        isDetailed: false
+      },
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      skipLocationChange: false
+      // do not trigger navigation
+    });
+  }
 }

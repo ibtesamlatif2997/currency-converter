@@ -10,13 +10,15 @@
         <div class="flex-container-row">
             <div>
                 <div>From</div> 
-                <select  [disabled]="!(amount > 0)" [(ngModel)]="fromCurrency">
+                <select  [disabled]="!(amount > 0) || isDetailed" [(ngModel)]="fromCurrency">
                     <option *ngFor="let currency of currencies" [value]="currency.value">
                         {{currency.name}}
                     </option>
                 </select>
             </div>
-            <img class="arrow-image" src="assets/images/arrows.jpg">
+            <div>
+                <img (click)="swapCurrencies()" class="arrow-image" src="assets/images/arrows.jpg">
+            </div>
             <div>
                 <div>To</div> 
                 <select [disabled]="!(amount > 0)" [(ngModel)]="toCurrency">
@@ -35,7 +37,7 @@
             <div class="converted-amount">
                <div>{{convertedAmount}}</div>
             </div>
-            <button [disabled]="!(amount > 0)" class="details-button">More Details</button>
+            <button *ngIf="!isDetailed" (click)="openDetails()" [disabled]="!(amount > 0)" class="details-button">More Details</button>
         </div>
     </div>
 </div>
