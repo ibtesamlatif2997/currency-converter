@@ -1,0 +1,27 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: gray;
+    padding: 2px 12px 2px 12px;
+
+    &--logo{
+        width: 50px;
+
+        &--image{
+            width: 50px;
+        }
+    }
+
+    &--nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: auto;
+
+        &--button{
+            height: 25px;
+        }
+    }
+}

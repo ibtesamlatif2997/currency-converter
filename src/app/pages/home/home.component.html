@@ -1,0 +1,6 @@
+<div>Currency Exchanger</div>
+<button *ngIf="isDetailed" (click)="openHome()" class="details-button">Back to Home</button>
+
+<app-converter-panel (converted)="convertValues($event)"></app-converter-panel>
+<app-popular-currencies *ngIf="!isDetailed" [popular-currencies]="popularCurrencies"></app-popular-currencies>
+<app-histogram-chart *ngIf="isDetailed"></app-histogram-chart> 

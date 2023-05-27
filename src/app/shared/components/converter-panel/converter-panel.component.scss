@@ -1,0 +1,62 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 150px;
+    border: 2px solid gray;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+
+    &--values{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &--converter{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .flex-container-row{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .converted-value{
+                height: 50px;
+            }
+
+            .converted-amount{
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                border: 2px solid gray;
+                border-radius: 2px;
+                width: 80%;
+                height: 50px;
+                margin:auto
+            }
+
+            .arrow-image{
+                width: 70px;
+            }
+
+            .convert-button{
+                width: 100%;
+                background-color: lightblue;
+            }
+
+            .details-button{
+                background-color: lightblue;
+                height: 30px;
+            }
+        }
+
+     
+    }
+}

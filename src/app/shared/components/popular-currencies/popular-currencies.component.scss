@@ -1,0 +1,26 @@
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    padding: 20px 0px 20px 0px;
+}
+
+.grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid gray;
+    border-radius: 12px;
+    text-align: center;
+    height: 120px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    .currency-name{
+        font-size: 40px;
+    }
+
+    .currency-value{
+        font-size: 16px;
+    }
+}

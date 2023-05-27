@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="container--values">
+        <div>
+            <div>Amount</div> 
+            <input [(ngModel)]="amount" type="text">
+        </div>
+        <input type="text" [value]="convertedValue" readonly>
+    </div>
+    <div class="container--converter">
+        <div class="flex-container-row">
+            <div>
+                <div>From</div> 
+                <select  [disabled]="!(amount > 0) || isDetailed" [(ngModel)]="fromCurrency">
+                    <option *ngFor="let currency of currencies" [value]="currency.value">
+                        {{currency.name}}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <img (click)="swapCurrencies()" class="arrow-image" src="assets/images/arrows.jpg">
+            </div>
+            <div>
+                <div>To</div> 
+                <select [disabled]="!(amount > 0)" [(ngModel)]="toCurrency">
+                    <option *ngFor="let currency of currencies" [value]="currency.value">
+                        {{currency.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="flex-container-row">
+            <button [disabled]="!(amount > 0)" 
+                (click)="currencyChanged()"
+                class="convert-button">Convert</button>
+        </div>
+        <div class="flex-container-row">
+            <div class="converted-amount">
+               <div>{{convertedAmount}}</div>
+            </div>
+            <button *ngIf="!isDetailed" (click)="openDetails()" [disabled]="!(amount > 0)" class="details-button">More Details</button>
+        </div>
+    </div>
+</div>
