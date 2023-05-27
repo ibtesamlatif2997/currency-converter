@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="container--values">
+        <div>
+            <div>Amount</div> 
+            <input type="text">
+        </div>
+        <input type="text" readonly>
+    </div>
+    <div class="container--converter">
+        <div class="flex-container-row">
+            <div>
+                <div>From</div> 
+                <select [(ngModel)]="fromCurrency">
+                    <option *ngFor="let currency of currencies" [value]="currency.value">
+                        {{currency.name}}
+                    </option>
+                </select>
+            </div>
+            <img class="arrow-image" src="assets/images/arrows.jpg">
+            <div>
+                <div>To</div> 
+                <select [(ngModel)]="toCurrency">
+                    <option *ngFor="let currency of currencies" [value]="currency.value">
+                        {{currency.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="flex-container-row">
+            <button class="convert-button">Convert</button>
+        </div>
+        <div class="flex-container-row">
+            <div>
+                <input class="converted-value" type="text">
+            </div>
+            <button class="details-button">More Details</button>
+        </div>
+    </div>
+</div>
