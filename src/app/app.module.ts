@@ -6,7 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
-import { CurrencyConverterModule } from './currency-converter/currency-converter.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { CurrencyConverterModule } from './currency-converter/currency-converter
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    CurrencyConverterModule,
+    PagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

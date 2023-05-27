@@ -5,8 +5,8 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => 
-    import('./currency-converter/currency-converter.module').then(
-      (module) => module.CurrencyConverterModule)
+    import('./pages/pages.module').then(
+      (module) => module.PagesModule)
   }
 ];
 

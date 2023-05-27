@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { ConverterRoutingModule } from './currency-converter-routing.module';
+import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule } from '@angular/forms';
 
 
@@ -14,10 +14,10 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     FormsModule,
-    ConverterRoutingModule
+    PagesRoutingModule
   ],
   exports:[
     HomeComponent
   ]
 })
-export class CurrencyConverterModule { }
+export class PagesModule { }
