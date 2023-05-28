@@ -30,12 +30,12 @@ RUN rm -rf node_modules
 # RUN npm install
 RUN yarn
 # Build with $env variable from outside
-RUN cd /client && npm run build
+RUN cd /client && npm run ${ENV}
 
 # Build nginx image
 FROM nginx:alpine as client
 RUN rm -rf /usr/share/nginx/html/*
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /client/dist/ /usr/share/nginx/html
+COPY --from=builder /dist/ /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]

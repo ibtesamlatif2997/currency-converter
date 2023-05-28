@@ -2,6 +2,8 @@ version: "3.2"
 services:
   client:
     build: .
+    environment:
+      ENV: ${ENV}
     ports:
       - "80:80"
     command: [ "nginx", "-g", "daemon off;" ]
