@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
       relativeTo: this._route,
       queryParams: {
         from: from,
-        to: to
+        to: to,
+        isDetailed: true
       },
       queryParamsHandling: 'merge',
       // preserve the existing query params in the route

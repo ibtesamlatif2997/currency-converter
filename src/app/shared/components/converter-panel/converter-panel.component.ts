@@ -46,6 +46,7 @@ export class ConverterPanelComponent implements OnInit {
 
       this.isDetailed = (params.isDetailed === "true");
       
+      this.currencyChanged();
     });
   }
 

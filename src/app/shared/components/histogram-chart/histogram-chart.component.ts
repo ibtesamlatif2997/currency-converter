@@ -40,7 +40,7 @@ export class HistogramChartComponent implements OnInit {
 
       const data = await this.fixer.getRates(date);
 
-      months.push(moment(date).format('MMMM'))
+      months.push(moment(date).format('MMM'))
 
       let rate: number = 0;
       if(data[this.toCurrency] && data[this.fromCurrency]){
@@ -53,14 +53,14 @@ export class HistogramChartComponent implements OnInit {
     this.chartOption = {
       xAxis: {
         type: 'category',
-        data: months,
+        data: months.reverse(),
       },
       yAxis: {
         type: 'value',
       },
       series: [
         {
-          data: rates,
+          data: rates.reverse(),
           type: 'line',
         },
       ],
