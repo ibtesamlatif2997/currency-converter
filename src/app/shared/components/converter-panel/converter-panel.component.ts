@@ -12,14 +12,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./converter-panel.component.scss']
 })
 export class ConverterPanelComponent implements OnInit {
-  // @Input('isDetailed') isDetailed: boolean = false;
-
+  @Input('currencies') currencies: Currency[] = [];
   @Output('converted') converted = new EventEmitter();
 
-  currencies: Currency[] = [];
   fromCurrency: string = "EUR";
   toCurrency: string = "USD";
   isDetailed:boolean = false;
+  isValid: boolean = false;
   amount: number = 0;
 
   currentRates:any;
@@ -34,8 +33,6 @@ export class ConverterPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
-    this.getCurrencies();
     this.getCurrentRates();
 
     this._route.queryParams
@@ -50,16 +47,6 @@ export class ConverterPanelComponent implements OnInit {
       this.isDetailed = (params.isDetailed === "true");
       
     });
-  }
-
-  async getCurrencies(){
-    const data = await this.fixer.getCurrencies();    
-    for (const property in data) {
-      this.currencies.push({
-        value:  property,
-        name: data[property]
-      });
-    }
   }
 
   async getCurrentRates(){
@@ -90,6 +77,13 @@ export class ConverterPanelComponent implements OnInit {
     const swapper = this.fromCurrency;
     this.fromCurrency = this.toCurrency;
     this.toCurrency = swapper;
+  }
+
+  amountChanged(){
+    const decimals = /^\d+\.\d{0,2}$/;
+    const number = /^\d*$/
+
+    this.isValid = decimals.test(this.amount.toString()) || number.test(this.amount.toString())
   }
 
   openDetails(){

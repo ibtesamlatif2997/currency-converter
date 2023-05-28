@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import * as moment from "moment";
 
 @Injectable()
 export class FixerService{
@@ -12,6 +13,7 @@ export class FixerService{
     ){}
 
     async getCurrencies(){
+
         const currencies = localStorage.getItem("currencies");
 
         if(currencies){
@@ -30,10 +32,15 @@ export class FixerService{
         return null;
     }
 
-    async getRates(date="latest"){
+    async getRates(date=""){
+        if(date === ""){
+            date = moment().format("YYYY-MM-DD")
+        }
+
         let historicData:any = {};
-        if(localStorage.getItem("historic")){
-            historicData = JSON.parse(localStorage.getItem("historic") || '{}');
+        const data = localStorage.getItem("historic")
+        if(data){
+            historicData = JSON.parse(data);
         }
 
         if(date !== 'latest' && historicData[date]){
@@ -42,7 +49,7 @@ export class FixerService{
 
         const response = this.http.get(`${this.apiUrl}/${date}`);
         const res: any = await lastValueFrom(response);
-
+        debugger;
         if(res && res.success){
             historicData[res.date] = res.rates;
             localStorage.setItem("historic", JSON.stringify(historicData))
