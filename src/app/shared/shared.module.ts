@@ -6,6 +6,7 @@ import { ConverterPanelComponent } from './components/converter-panel/converter-
 import { FormsModule } from '@angular/forms';
 import { HistogramChartComponent } from './components/histogram-chart/histogram-chart.component';
 import { CoreModule } from '../core/core.module';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CoreModule } from '../core/core.module';
   imports: [
     CommonModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    NgxEchartsModule.forChild()
   ],
   exports: [
     HeaderComponent,

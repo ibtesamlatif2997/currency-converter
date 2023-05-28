@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   fixerAPI: "https://data.fixer.io/api",
-  fixerKey: "12fb131a38d814135e6e8707d8ae0130"
+  fixerKey: "160f8524f1cc418b50d237adcee4a891"
 };
