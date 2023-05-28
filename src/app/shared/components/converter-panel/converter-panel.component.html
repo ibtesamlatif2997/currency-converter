@@ -7,34 +7,34 @@
         <input type="text" [value]="convertedValue" readonly>
     </div>
     <div class="container--converter">
-        <div class="flex-container-row">
+        <div class="flex-container">
             <div>
                 <div>From</div> 
-                <select  [disabled]="!(isValid) || isDetailed" [(ngModel)]="fromCurrency">
+                <select class="flex-container--dropdown" [disabled]="!(isValid) || isDetailed" [(ngModel)]="fromCurrency">
                     <option *ngFor="let currency of currencies" [value]="currency.value">
                         {{currency.name}}
                     </option>
                 </select>
             </div>
             <div>
-                <img (click)="swapCurrencies()" class="arrow-image" src="assets/images/arrows.jpg">
+                <img (click)="swapCurrencies()" class="flex-container--arrow-image" src="assets/images/arrows.jpg">
             </div>
             <div>
                 <div>To</div> 
-                <select [disabled]="!(isValid)" [(ngModel)]="toCurrency">
+                <select class="flex-container--dropdown" [disabled]="!(isValid)" [(ngModel)]="toCurrency">
                     <option *ngFor="let currency of currencies" [value]="currency.value">
                         {{currency.name}}
                     </option>
                 </select>
             </div>
         </div>
-        <div class="flex-container-row">
+        <div class="flex-container">
             <button [disabled]="!(isValid)" 
                 (click)="currencyChanged()"
-                class="convert-button">Convert</button>
+                class="flex-container--convert-button">Convert</button>
         </div>
-        <div class="flex-container-row">
-            <div class="converted-amount">
+        <div class="flex-container">
+            <div class="flex-container--converted-amount">
                <div>{{convertedAmount}}</div>
             </div>
             <button *ngIf="!isDetailed" (click)="openDetails()" [disabled]="!(isValid)" class="details-button">More Details</button>
