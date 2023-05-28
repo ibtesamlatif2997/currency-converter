@@ -1,0 +1,10 @@
+<div class="grid-container">
+    <div *ngFor="let currency of popularCurrencies">
+        <div class="currency-name">
+            {{currency.currency }}
+        </div>
+        <div class="currency-value">
+            {{currency.value | numberFormat }}
+        </div>
+    </div>
+</div>
